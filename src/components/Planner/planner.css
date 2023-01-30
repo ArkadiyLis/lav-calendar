@@ -1,0 +1,50 @@
+.planner {
+    color: #c6d9ec;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template:
+            'left-panel head' 0px
+            'left-panel content'
+            / auto 1fr;
+
+}
+
+.left-panel {
+    grid-area: left-panel;
+    display: grid;
+    grid-template:
+            'title' 35px
+            'new-event' 35px
+            'calendar' auto;
+
+    border-right: 1px solid gray;
+    background-color: #3378bb;
+}
+
+.left-panel-title {
+    grid-area: title;
+    display: grid;
+    align-items: center;
+    padding-left: 10px;
+}
+
+.new-event {
+    grid-area: new-event;
+    display: grid;
+    align-items: center;
+}
+
+.calendar {
+    grid-area: calendar;
+}
+
+.head {
+    grid-area: head;
+    /*border-bottom: 1px solid gray;*/
+}
+
+.content {
+    grid-area: content;
+    position: relative;
+}

@@ -1,0 +1,15 @@
+.datepicker {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+}
+.datepicker-input {
+
+}
+.datepicker-calendar {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #0088f3;
+}

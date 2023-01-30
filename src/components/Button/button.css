@@ -1,0 +1,32 @@
+.button {
+    display: flex;
+    align-items: center;
+    user-select: none;
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: #2470af;
+}
+
+.button-icon, .button-title {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-icon {
+    width: 35px !important;
+    height: 35px !important;
+}
+
+.button-icon + .button-title {
+    padding-left: 0px !important;
+
+}
+
+.button-title {
+    padding-left: 15px;
+    padding-right: 15px;
+    height: 35px !important;
+}
