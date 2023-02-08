@@ -11,6 +11,9 @@ import {useDispatch, useSelector} from "react-redux";
 import {show, close} from "../Modal/reducer";
 import Datepicker from "../Datepicker";
 import EventsTable from "../EventsTable";
+import Hourpicker from "../Hourpicker";
+import _ from "lodash";
+import {addEvent} from "./reducer";
 
 const initialPlannerState = {
     events: [
@@ -29,20 +32,39 @@ const plannerReducer = (state, action) => {
 };
 
 const AddEventModal = () => {
-    const [date, setDate] = useState();
+    const [startDate, setStartDate] = useState('');
+    const [endDate, setEndDate] = useState('');
+    const [startHour, setStartHour] = useState('');
+    const [endHour, setEndHour] = useState('');
     const reduxDispatch = useDispatch();
+
+    const hours = _.times(24, (hour) => {
+        const currentHourDate = DateTime.now().startOf('day').plus({hours: hour})
+        return {
+            date: currentHourDate,
+            value: currentHourDate.toLocaleString({hour: 'numeric', minute: '2-digit'}) ,
+        };
+    });
 
     return (
         <ModalForm>
             <ModalTitle>ADD EVENT MODAL</ModalTitle>
             <ModalBody>
-                <Datepicker date={date} onChange={setDate}/>
+                <div className="event-form-container">
+                    <div className="event-start-date-title">Начало: </div>
+                    <Datepicker date={startDate} onChange={setStartDate}/>
+                    <Hourpicker data={hours} value={startHour} onChange={(value, item) => setStartHour(value)}/>
+                    <div className="event-start-date-title">Конец: </div>
+                    <Datepicker date={endDate} onChange={setEndDate}/>
+                    <Hourpicker data={hours} value={endHour} onChange={setEndHour}/>
+                </div>
             </ModalBody>
             <ModalFooter>
                 <Button title={'Close'} icon={'close'} onClick={() => reduxDispatch(close())}/>
                 <Button title={'Add'} icon={'add'} onClick={() => {
-                    // console.log('add event');
-                    console.log(date);
+                    reduxDispatch(addEvent({
+                        startDate, endDate, startHour, endHour
+                    }));
                     reduxDispatch(close());
                 }}/>
             </ModalFooter>
@@ -75,7 +97,6 @@ const Planner = () => {
             </div>
             <div className="head"></div>
             <div className="content">
-                {/*<CalendarTable date={date}/>*/}
                 <EventsTable events={events}/>
             </div>
         </div>

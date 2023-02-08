@@ -1,0 +1,54 @@
+.selector {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+}
+
+.selector-input {
+
+}
+
+.selector-list-container {
+    min-width: inherit;
+    max-width: inherit;
+
+    z-index: 10;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #FFFFFF;
+    overflow: hidden;
+}
+
+.selector-list {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    border: 1px solid #007adb;
+    border-radius: 3px;
+    max-height: 200px;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+.selector-list-item {
+    display: flex;
+    align-items: center;
+    min-height: 35px;
+    max-height: 35px;
+    min-width: 150px;
+    max-width: 150px;
+
+}
+
+.selector-list-item-value {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 15px;
+}
+.selector-list-item:hover {
+    cursor: pointer;
+    background-color: #2470af;
+}

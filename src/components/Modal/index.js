@@ -3,7 +3,6 @@ import {useRef} from "react";
 import {useSelector} from "react-redux";
 
 export const ModalForm = ({children}) => (<div className="modal-form">{children}</div>);
-
 export const ModalTitle = ({children}) => (<div className="modal-title">{children}</div>);
 export const ModalBody = ({children}) => (<div className="modal-body">{children}</div>);
 export const ModalFooter = ({children}) => (<div className="modal-footer">{children}</div>);

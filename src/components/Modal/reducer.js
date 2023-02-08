@@ -8,7 +8,6 @@ export const modal = createSlice({
     },
     reducers: {
         show: (state, action) => {
-            console.log(action);
             state.show = true;
             state.component = action.payload;
         },

@@ -89,7 +89,7 @@ const EventsTable = ({events}) => {
                     width: eventWidth, height: eventHeight, top: eventTop, left: eventLeft
                 }}>
                     <div className="events-table-event" style={{backgroundColor: getColorHexByIndex(eventIndex)}}>
-                        {renderHour}
+                        {/*{renderHour}*/}
                     </div>
                 </div>);
         })

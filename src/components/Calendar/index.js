@@ -13,8 +13,7 @@ const Calendar = ({date, setDate}) => {
     const [dateView, setDateView] = useState(date || DateTime.now());
 
     const firstDayInMonth = dateView.startOf('month');
-    const firstDayWeekOffset = _.indexOf(Info.weekdays('short'), firstDayInMonth.weekdayShort);
-    const firstCalendarDate = firstDayInMonth.minus({days: firstDayWeekOffset});
+    const firstCalendarDate = firstDayInMonth.minus({days: firstDayInMonth.weekday});
 
     const handleDayClick = (e, newDate) => {
         e.preventDefault();

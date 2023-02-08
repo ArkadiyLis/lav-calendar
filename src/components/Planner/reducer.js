@@ -1,11 +1,11 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {DateTime} from "luxon";
-
+import _ from 'lodash';
 export const planner = createSlice({
     name: 'planner',
     initialState: {
         events: [
-            {
+            /*{
                 id: 1,
                 start: DateTime.now().set({hours: 9, minutes: 0, seconds: 0, millisecond: 0}),
                 end: DateTime.now().set({hours: 11, minutes: 0, seconds: 0, millisecond: 0}),
@@ -44,11 +44,17 @@ export const planner = createSlice({
                 id: 8,
                 start: DateTime.now().set({hours: 17,minutes: 0, seconds: 0, millisecond: 0}),
                 end: DateTime.now().set({hours: 18,minutes: 0, seconds: 0, millisecond: 0}),
-            }
-
-        ]    },
+            }*/
+        ]
+    },
     reducers: {
         addEvent: (state, action) => {
+            const {startDate, endDate, startHour, endHour} = action.payload;
+            state.events.push({
+                id: _.uniqueId(),
+                start: startDate.set({hours: DateTime.fromFormat(startHour, 't').hour}),
+                end: endDate.set({hours: DateTime.fromFormat(endHour, 't').hour})
+            });
         },
         updateEvent: (state, action) => {
         },
