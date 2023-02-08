@@ -1,3 +1,4 @@
+import './variables.css';
 import './planner.css';
 import Calendar from "../Calendar";
 import {Icon} from "@mui/material";
@@ -11,9 +12,9 @@ import {useDispatch, useSelector} from "react-redux";
 import {show, close} from "../Modal/reducer";
 import Datepicker from "../Datepicker";
 import EventsTable from "../EventsTable";
-import Hourpicker from "../Hourpicker";
 import _ from "lodash";
 import {addEvent} from "./reducer";
+import Selector from "../Selector";
 
 const initialPlannerState = {
     events: [
@@ -48,20 +49,20 @@ const AddEventModal = () => {
 
     return (
         <ModalForm>
-            <ModalTitle>ADD EVENT MODAL</ModalTitle>
+            <ModalTitle>ADD EVENT</ModalTitle>
             <ModalBody>
                 <div className="event-form-container">
-                    <div className="event-start-date-title">Начало: </div>
+                    <div className="event-start-date-title">Start: </div>
                     <Datepicker date={startDate} onChange={setStartDate}/>
-                    <Hourpicker data={hours} value={startHour} onChange={(value, item) => setStartHour(value)}/>
-                    <div className="event-start-date-title">Конец: </div>
+                    <Selector data={hours} value={startHour} onChange={(value, item) => setStartHour(value)} renderValue={({value, formattedValue}) => value}/>
+                    <div className="event-start-date-title">End: </div>
                     <Datepicker date={endDate} onChange={setEndDate}/>
-                    <Hourpicker data={hours} value={endHour} onChange={setEndHour}/>
+                    <Selector data={hours} value={endHour} onChange={setEndHour} renderValue={({value, formattedValue}) => value}/>
                 </div>
             </ModalBody>
             <ModalFooter>
-                <Button title={'Close'} icon={'close'} onClick={() => reduxDispatch(close())}/>
-                <Button title={'Add'} icon={'add'} onClick={() => {
+                <Button className="button-close" title={'Close'} icon={'close'} onClick={() => reduxDispatch(close())}/>
+                <Button className="button-success" title={'Add'} icon={'add'} onClick={() => {
                     reduxDispatch(addEvent({
                         startDate, endDate, startHour, endHour
                     }));

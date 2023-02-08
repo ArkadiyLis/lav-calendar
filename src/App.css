@@ -12,4 +12,5 @@ html, body, #root, .App {
 
 .App {
     display: flex;
+    font-family: Arial;
 }

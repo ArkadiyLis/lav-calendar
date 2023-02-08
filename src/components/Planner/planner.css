@@ -1,5 +1,5 @@
 .planner {
-    color: #c6d9ec;
+    color: var(--text-light);
     width: 100vw;
     height: 100vh;
     display: grid;
@@ -18,8 +18,7 @@
             'new-event' 35px
             'calendar' auto;
 
-    border-right: 1px solid gray;
-    background-color: #3378bb;
+    background-color: var(--background);
 }
 
 .left-panel-title {
@@ -41,7 +40,6 @@
 
 .head {
     grid-area: head;
-    /*border-bottom: 1px solid gray;*/
 }
 
 .content {
@@ -52,9 +50,12 @@
 .event-form-container {
     display: grid;
     grid-template-rows: 1fr 1fr;
-    grid-template-columns: min-content 1fr 1fr;
+    grid-template-columns: min-content 2fr 1fr;
     column-gap: 10px;
+    row-gap: 10px;
     align-items: center;
+
+    color: var(--text-dark);
 }
 .event-form-row {
     display: flex;

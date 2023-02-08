@@ -31,10 +31,8 @@
 }
 
 .prev:hover, .calendar-title:hover, .next:hover {
-    background-color: #2470af;
     cursor: pointer;
 }
-
 
 .prev, .next {
     user-select: none;
@@ -54,24 +52,30 @@
 }
 
 .calendar-body > *:hover {
-    background-color: #007adb;
+    background-color: var(--background-hover);
     cursor: pointer;
 }
 
-.current-month {
-    background-color: #2470af;
+.current-month, .selected-day {
+    color: var(--text-light) !important;
 }
 
 .day {
+    border-radius: 5px;
+    color: var(--calendar-prev-next-month);
 }
 
 .today {
-    background: #007adb;
+    background-color: var(--calendar-current-day) !important;
 }
 
 .selected-day {
-    border: 1px solid #9d9d9d;
-    background: #0088f3;
+    background-color: var(--calendar-select-day) !important;
+}
+
+.selected-week {
+    border-radius: 0;
+    background-color: var(--calendar-select-week);
 }
 
 .calendar-footer {

@@ -27,7 +27,7 @@ const Selector = ({data, renderValue, value, onChange}) => {
 
     return (
         <div className="selector" onClick={handleOnFocusInput} onBlur={handleOnBlurInput}>
-            <Input readonly={true} value={value}/>
+            <Input className="selector-input" readonly={true} value={value}/>
 
             {(focus && data && data.length !== 0) && (
                 <div className="selector-list-container" onMouseDown={handleOnMouseDownPreventParentBlur}>

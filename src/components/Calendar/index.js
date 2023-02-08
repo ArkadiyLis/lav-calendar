@@ -1,4 +1,4 @@
-import {DateTime, Settings, Info} from 'luxon';
+import {DateTime, Settings, Info, Interval} from 'luxon';
 import _ from 'lodash';
 import cn from 'classnames';
 import './calendar.css';
@@ -56,10 +56,12 @@ const Calendar = ({date, setDate}) => {
                             {
                                 firstCalendarDate && _.times(DAYS_IN_VIEW, (dayIndex) => {
                                     const day = firstCalendarDate.plus({days: dayIndex});
+
                                     const dayClassName = cn('day', {
                                         'current-month': day.hasSame(dateView, 'month'),
                                         'today': DateTime.now().hasSame(day, 'day'),
                                         'selected-day': date && date.hasSame(day, 'day'),
+                                        'selected-week': date && Interval.fromDateTimes(date.startOf('week').minus({days: 1}), date.endOf('week').minus({days: 1})).overlaps(Interval.fromDateTimes(day.startOf('day'), day.endOf('day'))),
                                     })
                                     return (
                                         <div className={dayClassName} key={dayIndex} onClick={e => handleDayClick(e, day)}>{day.day}</div>
