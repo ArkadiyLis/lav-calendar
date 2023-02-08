@@ -86,36 +86,30 @@ const EventsTable = ({events}) => {
             const renderHour = event.start.toLocaleString({hour: 'numeric', minute: '2-digit'});
 
             return (<div className="events-table-event-container" key={eventIndex} style={{
-                    width: eventWidth, height: eventHeight, top: eventTop, left: eventLeft
-                }}>
-                    <div className="events-table-event" style={{backgroundColor: getColorHexByIndex(eventIndex)}}>
-                        {/*{renderHour}*/}
-                    </div>
-                </div>);
+                width: eventWidth, height: eventHeight, top: eventTop, left: eventLeft
+            }}>
+                <div className="events-table-event" style={{backgroundColor: getColorHexByIndex(eventIndex)}}>
+                    {/*{renderHour}*/}
+                </div>
+            </div>);
         })
     };
-
-    console.log(currentWeekInterval)
-    console.log('currentWeekInterval.length(\'days\')', currentWeekInterval.length('days'));
-
 
     return (<div className="events-table-scroll">
 
         <div className="events-table-columns">
 
-            <div className="events-table-column">
+            <div className="events-table-column events-table-hours-fixed">
                 <div className="events-table-rows">
 
-                    <div className="events-table-row">
+                    <div className="events-table-row events-table-empty-fixed">
                         <div className="events-table-cell events-table-hour-header"/>
                     </div>
 
                     {_.times(currentDayInterval.length('hours'), (hour) => {
                         const currentRowDate = currentDayInterval.start.plus({hours: hour});
                         const currentRowDateInterval = Interval.fromDateTimes(currentRowDate, currentRowDate.plus({hours: 1}));
-                        const renderTime = currentRowDate.toLocaleString({
-                            hour: 'numeric', minute: '2-digit'
-                        });
+                        const renderTime = currentRowDate.toFormat('ha').toLowerCase();
 
                         return (<div className="events-table-row">
                             <div className="events-table-cell events-table-hour-header">
@@ -130,16 +124,16 @@ const EventsTable = ({events}) => {
 
             <div className="events-table-column">
 
-                <div className="events-table-rows">
+                <div className="events-table-rows events-table-days-fixed">
                     <div className="events-table-row">
                         <div className="events-table-columns">
                             {_.times(Math.round(currentWeekInterval.length('days')), (day) => {
                                 const currentDayDate = currentWeekInterval.start.plus({days: day});
-
+                                const currentDayRender = currentDayDate.toFormat('EEEE d');
                                 return (<div className="events-table-column">
                                     <div className="events-table-row">
                                         <div className="events-table-cell">
-                                            {currentDayDate.weekdayLong}
+                                            {currentDayRender}
                                         </div>
                                     </div>
                                 </div>)
@@ -165,7 +159,7 @@ const EventsTable = ({events}) => {
 
                                             return (<div className="events-table-row">
                                                 <div className="events-table-cell">
-                                                    {renderTime}
+                                                    {/*{renderTime}*/}
                                                 </div>
                                             </div>);
                                         })}

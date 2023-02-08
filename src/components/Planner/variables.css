@@ -1,0 +1,22 @@
+:root {
+    --background: #106ebe;
+    --background-light: #ffffff;
+    --background-hover: #338ddc;
+    --background-select: #1264aa;
+    --background-button-select: #0b4d85;
+    --background-button-active: #69afe5;
+
+    --text-light: #ffffff;
+    --text-dark: #7c7c7c;
+
+    --border-dark: #d2d2d2;
+    --border-dark-hover: #969696;
+    --border-table-dark: #f2f2f2;
+
+    --input-hover: #bddbf4;
+
+    --calendar-current-day: #0078d7;
+    --calendar-select-day: #69afe5;
+    --calendar-select-week: #1264aa;
+    --calendar-prev-next-month: #5ea7e0;
+}

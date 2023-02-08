@@ -6,7 +6,12 @@
 
 .button:hover {
     cursor: pointer;
-    background-color: #2470af;
+    background-color: var(--background-hover);
+}
+
+.button:active {
+    cursor: pointer;
+    background-color: var(--background-button-active);
 }
 
 .button-icon, .button-title {
@@ -29,4 +34,17 @@
     padding-left: 15px;
     padding-right: 15px;
     height: 35px !important;
+}
+
+.button-close {
+    border-radius: 3px;
+    margin-right: 10px;
+}
+.button-close:hover {
+    background-color: var(--border-dark);
+}
+.button-success {
+    color: var(--text-light);
+    background-color: var(--background);
+    border-radius: 3px;
 }
