@@ -7,9 +7,10 @@ import CalendarTable from "../CalendarTable";
 import {useReducer, useState} from "react";
 import {DateTime} from "luxon";
 import Modal, {ModalBody, ModalFooter, ModalForm, ModalTitle} from "../Modal";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {show, close} from "../Modal/reducer";
 import Datepicker from "../Datepicker";
+import EventsTable from "../EventsTable";
 
 const initialPlannerState = {
     events: [
@@ -53,6 +54,7 @@ const Planner = () => {
     const [date, setDate] = useState(DateTime.now())
     const [state, dispatch] = useReducer(plannerReducer, initialPlannerState);
     const reduxDispatch = useDispatch()
+    const {events} = useSelector(state => state.planner);
 
     return (
         <div className="planner">
@@ -73,7 +75,8 @@ const Planner = () => {
             </div>
             <div className="head"></div>
             <div className="content">
-                <CalendarTable date={date}/>
+                {/*<CalendarTable date={date}/>*/}
+                <EventsTable events={events}/>
             </div>
         </div>
     );

@@ -39,6 +39,7 @@
 }
 
 .day-title, .day-header {
+    min-width: 150px;
     width: 150px;
     height: 50px;
 }
@@ -56,4 +57,21 @@
 .today-header {
     color: #1179d8;
     font-weight: bold;
+}
+
+.event {
+    display: table-cell;
+    position: absolute;
+    top: 150px;
+    left: 200px;
+    width: 150px;
+    height: 100px;
+
+    background-color: #0088f3;
+    border-radius: 3px;
+    opacity: 0.5;
+}
+
+.event:hover {
+    opacity: 0.7;
 }

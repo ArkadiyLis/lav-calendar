@@ -3,7 +3,7 @@ import _ from 'lodash';
 import './calendar-table.css';
 import cn from "classnames";
 
-const CalendarTable = ({date = DateTime.now()}) => {
+const CalendarTable = ({date = DateTime.now(), events}) => {
     const firstDayWeek = date.startOf('week');
 
     return (<div className="table-scroll">
@@ -17,7 +17,6 @@ const CalendarTable = ({date = DateTime.now()}) => {
                         const dayTitleClassName = cn('day-title', {
                             'today-title': DateTime.now().hasSame(dayDate, 'day'),
                         })
-
 
                         return (<th className={dayTitleClassName} key={dayIndex}>{day}</th>);
                     })}
@@ -51,7 +50,11 @@ const CalendarTable = ({date = DateTime.now()}) => {
                     </tr>);
                 })}
                 </tbody>
+
+
             </table>
+        <div className="event"/>
+
         </div>);
 }
 export default CalendarTable;
