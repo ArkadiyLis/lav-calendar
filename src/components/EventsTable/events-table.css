@@ -67,8 +67,8 @@
     z-index: 1;
     position: absolute;
     display: flex;
-    padding-top: 2px;
     padding-left: 2px;
+    padding-bottom: 2px;
 }
 
 .events-table-event {
