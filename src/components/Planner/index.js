@@ -1,10 +1,8 @@
-import './variables.css';
+import '../../variables.css';
 import './planner.css';
 import Calendar from "../Calendar";
 import {Icon} from "@mui/material";
 import Button from "../Button";
-// import CalendarTable from "../CalendarTableVirtualize";
-import CalendarTable from "../CalendarTable";
 import {useReducer, useState} from "react";
 import {DateTime} from "luxon";
 import Modal, {ModalBody, ModalFooter, ModalForm, ModalTitle} from "../Modal";
@@ -15,6 +13,7 @@ import EventsTable from "../EventsTable";
 import _ from "lodash";
 import {addEvent} from "./reducer";
 import Selector from "../Selector";
+import Input from "../Input";
 
 const initialPlannerState = {
     events: [
@@ -33,10 +32,13 @@ const plannerReducer = (state, action) => {
 };
 
 const AddEventModal = () => {
-    const [startDate, setStartDate] = useState('');
-    const [endDate, setEndDate] = useState('');
+    const [name, setName] = useState(`Test event`);
+    const [description, setDescription] = useState(`Test event description`);
+    const [startDate, setStartDate] = useState(DateTime.now());
+    const [endDate, setEndDate] = useState(DateTime.now());
     const [startHour, setStartHour] = useState('');
     const [endHour, setEndHour] = useState('');
+
     const reduxDispatch = useDispatch();
 
     const hours = _.times(24, (hour) => {
@@ -52,6 +54,12 @@ const AddEventModal = () => {
             <ModalTitle>ADD EVENT</ModalTitle>
             <ModalBody>
                 <div className="event-form-container">
+                    <div className="event-name-title">Name: </div>
+                    <Input classNameContainer="event-form-name" value={name} setValue={setName}/>
+
+                    <div className="event-description-title">Description: </div>
+                    <Input classNameContainer="event-form-description" value={description} setValue={setDescription}/>
+
                     <div className="event-start-date-title">Start: </div>
                     <Datepicker date={startDate} onChange={setStartDate}/>
                     <Selector data={hours} value={startHour} onChange={(value, item) => setStartHour(value)} renderValue={({value, formattedValue}) => value}/>
@@ -64,7 +72,7 @@ const AddEventModal = () => {
                 <Button className="button-close" title={'Close'} icon={'close'} onClick={() => reduxDispatch(close())}/>
                 <Button className="button-success" title={'Add'} icon={'add'} onClick={() => {
                     reduxDispatch(addEvent({
-                        startDate, endDate, startHour, endHour
+                        name, description, startDate, endDate, startHour, endHour
                     }));
                     reduxDispatch(close());
                 }}/>
@@ -98,7 +106,7 @@ const Planner = () => {
             </div>
             <div className="head"></div>
             <div className="content">
-                <EventsTable events={events}/>
+                <EventsTable selectedDate={date} events={events}/>
             </div>
         </div>
     );

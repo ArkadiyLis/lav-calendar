@@ -19,6 +19,8 @@
             'calendar' auto;
 
     background-color: var(--background);
+    row-gap: 10px;
+    padding: 0 10px;
 }
 
 .left-panel-title {
@@ -49,7 +51,7 @@
 
 .event-form-container {
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    /*grid-template-rows: 1fr 1fr;*/
     grid-template-columns: min-content 2fr 1fr;
     column-gap: 10px;
     row-gap: 10px;
@@ -63,4 +65,14 @@
 .event-form-column {
     display: flex;
     flex-direction: column;
+}
+
+.event-name-title {}
+
+.event-form-name {
+    grid-column-start: span 2;
+}
+
+.event-form-description {
+    grid-column-start: span 2;
 }

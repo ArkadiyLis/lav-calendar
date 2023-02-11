@@ -1,12 +1,23 @@
 :root {
+    --default-hour-header-width: 40px;
+    --default-hour-header-height: 50px;
+
+    --default-week-header-width: 100px;
+    --default-week-header-height: 50px;
+
+    --default-day-cell-width: 100px;
+    --default-day-cell-height: 50px;
+
     --background: #106ebe;
     --background-light: #ffffff;
+    --background-gray: #f9f9f9;
     --background-hover: #338ddc;
     --background-select: #1264aa;
     --background-button-select: #0b4d85;
     --background-button-active: #69afe5;
 
     --text-light: #ffffff;
+    --text-gray: #9d9d9d;
     --text-dark: #7c7c7c;
 
     --border-dark: #d2d2d2;

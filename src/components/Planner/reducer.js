@@ -49,9 +49,11 @@ export const planner = createSlice({
     },
     reducers: {
         addEvent: (state, action) => {
-            const {startDate, endDate, startHour, endHour} = action.payload;
+            const {name, description, startDate, endDate, startHour, endHour} = action.payload;
             state.events.push({
                 id: _.uniqueId(),
+                name,
+                description,
                 start: startDate.set({hours: DateTime.fromFormat(startHour, 't').hour}),
                 end: endDate.set({hours: DateTime.fromFormat(endHour, 't').hour})
             });
